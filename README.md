@@ -3,7 +3,7 @@ SublimeCloud
 
 ## Description
 
-SublimeCloud is a Sublime Text 2 Plugin which manages your settings, bundle [etc?], installed plugins? via a github repo.
+SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory to/from a github repository. Handy for reinstalling, setting up a new workstation, etc.
 
 ## Future Goals
 
