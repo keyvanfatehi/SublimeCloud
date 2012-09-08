@@ -1,9 +1,14 @@
 import sublime, sublime_plugin
 
-from xml.etree import ElementTree as ET
 from urllib import urlopen
+import json
 
-GITHUB_REPO = r"http://github.com/username/"
+class SublimeCloudSettings
+  def __init__(self)
+    settings_file = open(os.path.expanduser('~/.sublime_cloud'))
+    data = json.load(json_data)
+    settings_file.close()
+    self.repo = data["github_repository"]
 
 class ExampleCommand(sublime_plugin.TextCommand):
   def run(self, edit):

@@ -1,0 +1,4 @@
+# Example of .sublime_cloud file
+{
+    "github_repository":"git@github.com:keyvanfatehi/keyvans_sublime_settings.git"
+}
