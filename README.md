@@ -5,11 +5,13 @@ SublimeCloud
 
 SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory to/from a github repository. Handy for reinstalling, setting up a new workstation, etc.
 
+* This is a work in progress, currently building for Mac right now, but I'll test it on the other platforms and provide instructions.
+
 ## Installation
 
 * Create a new github repository for my sublime settings to sync to. (Only for first use)
 
-* Ensure sure push/pull access to the repository.
+* Ensure push/pull access to said repository.
 
 * Install the plugin by placing the SublimeCloud.py file into ~/Library/Application Support/Sublime Text 2/Packages/User
 
