@@ -41,4 +41,6 @@ SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory 
 
 http://docs.sublimetext.info/en/latest/index.html
 
+http://www.sublimetext.com/docs/2/api_reference.html
+
 http://www.sublimetext.com/docs/api-reference
