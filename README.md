@@ -13,6 +13,8 @@ SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory 
 
 ## Todo
 * Use sublime_plugin.EventListener to watch for the git repo settings key and update the remote accordingly
+* Make it more convenient to use than the command line.
+* Have a rubygem or something to faciliate a one-liner for new machines to quickly get your settings
 
 ## Installation
 
@@ -32,17 +34,17 @@ SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory 
 
 ## Usage (Push)
 
-* Use the SublimeCloudPush command to seed the repository with current data:
-  - Check if ~/Library/Application Support/Sublime Text 2/Packages/User is a git repo
-    - If not, git init, git remote add origin <repo>
-  - git add . ; git commit -am "foo" ; git push -f origin master
+Use the SublimeCloudPush command to seed the repository with current data:
+
+Open the console with CTRL ~
+Enter sublime.run_command("sublime_cloud_push")
 
 ## Usage (Pull)
 
-* Use the SublimeCloudPull command to replace current data with that on github:
-  - Check if ~/Library/Application Support/Sublime Text 2/Packages/User is a git repo
-    - If not, git init, git remote add origin <repo>
-  - git pull origin master
+Use the SublimeCloudPull command to replace current data with that on github:
+
+* Open the console with CTRL ~
+* Enter sublime.run_command("sublime_cloud_pull")
 
 ## Sublime Plugin Reference 
 
