@@ -15,10 +15,14 @@ class SublimeCloud(object):
   def userdir(self):
     return os.path.join(sublime.packages_path(), 'User')
 
-  def check_userdir_is_repo(self):
+  def ensure_userdir_is_repo(self):
     output = self.shellcmd(['git', 'status'])
-    goodmsg = re.compile('On branch master')
-    return True if goodmsg.search(output) else False
+    if not re.compile('On branch master').search(output):
+      self.shellcmd(['git', 'init'])
+      uri = self.remote_uri()
+      if uri:
+        self.shellcmd(['git', 'remote', 'add', 'origin', uri])
+    return uri
 
   def remote_uri(self):
     settings = sublime.load_settings("Preferences.sublime-settings")
@@ -30,18 +34,23 @@ class SublimeCloud(object):
         return None
 
   def push(self):
-    self.check_userdir_is_repo()
-    print "Ready to push"
+    uri = self.ensure_userdir_is_repo()
+    if sublime.ok_cancel_dialog("Push settings to "+uri+"?", "Push!"):
+      self.shellcmd(['git', 'add', '.'])
+      self.shellcmd(['git', 'commit', '-am', '"SublimeCloud Autocommit"'])
+      self.shellcmd(['git', 'push', '-f', 'origin', 'master'])
 
   def pull(self):
-    self.check_userdir_is_repo()
-    print "Ready to pull"
+    uri = self.ensure_userdir_is_repo()
+    if sublime.ok_cancel_dialog("Pull settings from "+uri+"?", "Pull!"):
+      self.shellcmd(['git', 'fetch', '--all'])
+      self.shellcmd(['git', 'reset', '--hard', 'origin/master'])
+      self.shellcmd(['git', 'pull', 'origin', 'master'])
 
 class SublimeCloudPush(sublime_plugin.ApplicationCommand):
   def run(self):
-    repo = SublimeCloud().remote_uri()
-    SublimeCloud().push() if repo else None
+    SublimeCloud().push()
 
 class SublimeCloudPull(sublime_plugin.ApplicationCommand):
   def run(self):
-    pass
+    SublimeCloud().pull()
