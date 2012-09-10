@@ -1,3 +1,4 @@
+
 SublimeCloud
 =============
 
@@ -25,14 +26,14 @@ SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory 
 
 ## Usage (Push)
 
-* I then trigger the SublimeCloudPush command to seed the repository with current data:
+* Use the SublimeCloudPush command to seed the repository with current data:
   - Check if ~/Library/Application Support/Sublime Text 2/Packages/User is a git repo
     - If not, git init, git remote add origin <repo>
   - git add . ; git commit -am "foo" ; git push -f origin master
 
 ## Usage (Pull)
 
-* Or I trigger the SublimeCloudPull command to replace current data with that on github:
+* Use the SublimeCloudPull command to replace current data with that on github:
   - Check if ~/Library/Application Support/Sublime Text 2/Packages/User is a git repo
     - If not, git init, git remote add origin <repo>
   - git pull origin master
@@ -42,5 +43,3 @@ SublimeCloud is a Sublime Text 2 plugin that syncs your Packages/User directory 
 http://docs.sublimetext.info/en/latest/index.html
 
 http://www.sublimetext.com/docs/2/api_reference.html
-
-http://www.sublimetext.com/docs/api-reference
