@@ -18,31 +18,29 @@ class SublimeCloud(object):
   def check_userdir_is_repo(self):
     output = self.shellcmd(['git', 'status'])
     goodmsg = re.compile('On branch master')
-    print os.getcwd()
     return True if goodmsg.search(output) else False
 
   def remote_uri(self):
-    settings = self.view.settings()
+    settings = sublime.load_settings("Preferences.sublime-settings")
     key = "sublime_cloud_git"
     if settings.has(key):
-        output = settings.get(key)
+        return settings.get(key)
     else:
-        output = 'Add "sublime_cloud_git" to your settings!'
+        sublime.error_message('Define "sublime_cloud_git" in your settings!')
+        return None
 
   def push(self):
-    pass
+    self.check_userdir_is_repo()
+    print "Ready to push"
 
   def pull(self):
-    pass
-
-class ExampleCommand(sublime_plugin.TextCommand):
-  def run(self, edit):
-    
-    self.view.insert(edit, 0, output)
+    self.check_userdir_is_repo()
+    print "Ready to pull"
 
 class SublimeCloudPush(sublime_plugin.ApplicationCommand):
   def run(self):
-    print SublimeCloud().check_userdir_is_repo()
+    repo = SublimeCloud().remote_uri()
+    SublimeCloud().push() if repo else None
 
 class SublimeCloudPull(sublime_plugin.ApplicationCommand):
   def run(self):
